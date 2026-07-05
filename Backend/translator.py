@@ -60,6 +60,13 @@ def translate(text, language):
     except Exception:
         detected_language = "Detect Language"
 
+    # Check if detected language and target language are the same
+    if detected_language.lower() == language.lower():
+        return {
+            "detected_language": detected_language,
+            "translated_text": f"The input text language and translation language are the same ({detected_language})."
+        }
+
     # Step 2: Chunk the input text and translate each chunk
     chunks = chunk_text(text, max_chunk_size=1500)
     translated_chunks = []
