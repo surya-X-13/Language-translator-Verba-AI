@@ -418,7 +418,7 @@ with col2:
                             "text": text,
                             "target_language": language
                         },
-                        timeout=30
+                        timeout=120
                     )
                     
                     if response.status_code == 200:
