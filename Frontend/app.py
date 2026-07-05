@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
+import os
 
 st.set_page_config(
     page_title="Verba AI · AI Language Translator",
@@ -410,8 +411,9 @@ with col2:
             with st.spinner("Translating..."):
                 try:
                     # Make post request safely
+                    backend_url = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
                     response = requests.post(
-                        "http://127.0.0.1:8000/translate",
+                        f"{backend_url}/translate",
                         json={
                             "text": text,
                             "target_language": language
